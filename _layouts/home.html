@@ -1,0 +1,67 @@
+---
+layout: base
+---
+
+<div class="contents">
+	{% for focus in  site.posts %}
+	{% if focus.focus %}
+		<div class="card" , style="border:0">
+			<div class="row g-0 focus-card">
+				<div class="col-md-6">
+					<img src="/assets/images/{{ focus.image }}" class="img-fluid focus-image" alt="Cover Focus">
+				</div>
+				<div class="col-md-6" style="display: flex; align-items: center;">
+					<div class="card-body focus-text">
+						<h1 class="card-title">{{ focus.head }}</h1>
+						<p class="card-text text-ellipsis">{{ focus.desc }}</p>
+						<div class="dropdown text-center">
+							<a class="btn btn-outline-success dropdown-toggle" href="#" role="button"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								Listen On
+							</a>
+
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="{{ focus.youtube_link }}">YouTube</a></li>
+								<li><a class="dropdown-item" href="{{ focus.spotify_link }}">Spotify</a></li>
+								<li><a class="dropdown-item" href="{{ focus.apple_podcasts_link }}">Apple Podcasts</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+	{% endfor %}
+
+	<h3 style="margin-left: 5vw; margin-top: 50px;">Recent Episodes</h3>
+
+	<div style="margin-left: 5vw; margin-right: 5vw">
+		<div class="row row-cols-1 row-cols-md-3 g-4">
+			{% for episode in site.posts %}
+			<div class="col">
+				<div class="card h-100">
+					<img src="/assets/images/{{ episode.image }}" class="card-img-top">
+					<div class="card-body">
+						<h5 class="card-title">{{ episode.head }}</h5>
+						<p class="card-text">
+							{{ episode.desc }}
+						<div class="dropdown text-center">
+							<a class="btn btn-outline-success dropdown-toggle" href="#" role="button"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								Listen
+							</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="{{ episode.youtube_link }}">YouTube</a></li>
+								<li><a class="dropdown-item" href="{{ episode.spotify_link }}">Spotify</a></li>
+								<li><a class="dropdown-item" href="{{ episode.apple_podcasts_link }}">Apple Podcasts</a>
+								</li>
+							</ul>
+						</div>
+						</p>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>

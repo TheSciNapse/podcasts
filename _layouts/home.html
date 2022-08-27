@@ -3,33 +3,41 @@ layout: base
 ---
 
 <div class="contents">
-	{% for focus in  site.posts %}
+	{% for focus in site.posts %}
 	{% if focus.focus %}
-		<div class="card" , style="border:0">
-			<div class="row g-0 focus-card">
-				<div class="col-md-6">
-					<img src="assets/images/{{ focus.image }}" class="img-fluid focus-image" alt="Cover Focus">
-				</div>
-				<div class="col-md-6" style="display: flex; align-items: center;">
-					<div class="card-body focus-text">
-						<h1 class="card-title">{{ focus.head }}</h1>
-						<p class="card-text text-ellipsis">{{ focus.desc }}</p>
-						<div class="dropdown text-center">
-							<a class="btn btn-outline-success dropdown-toggle" href="#" role="button"
-								data-bs-toggle="dropdown" aria-expanded="false">
-								Listen On
-							</a>
 
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="{{ focus.youtube_link }}">YouTube</a></li>
-								<li><a class="dropdown-item" href="{{ focus.spotify_link }}">Spotify</a></li>
-								<li><a class="dropdown-item" href="{{ focus.apple_podcasts_link }}">Apple Podcasts</a></li>
-							</ul>
-						</div>
+
+	<div class="card" , style="border:0">
+		<div class="row g-0 focus-card">
+			<div class="col-md-6">
+				<a href="{{ focus.url | relative_url }}">
+					<img src="{{ site.baseurl }}/assets/images/{{ focus.image }}" class="img-fluid focus-image" alt="Cover Focus">
+				</a>
+			</div>
+			<div class="col-md-6" style="display: flex; align-items: center;">
+				<div class="card-body focus-text">
+					<a href="{{ focus.url | relative_url  }}" class="url-text">
+						<h1 class="card-title">{{ focus.head }}</h1>
+					</a>
+					<p class="card-text text-ellipsis">{{ focus.desc }}</p>
+					<p class="card-text"><small class="text-muted">{{ focus.uploaded_on }}</small></p>
+					<div class="dropdown text-center">
+						<a class="btn btn-outline-success dropdown-toggle" href="#" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							Listen On
+						</a>
+
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="{{ focus.youtube_link }}" target="_blank">YouTube</a></li>
+							<li><a class="dropdown-item" href="{{ focus.spotify_link }}" target="_blank">Spotify</a></li>
+							<li><a class="dropdown-item" href="{{ focus.apple_podcasts_link }}" target="_blank">Apple Podcasts</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+
 	{% endif %}
 	{% endfor %}
 
@@ -40,9 +48,13 @@ layout: base
 			{% for episode in site.posts %}
 			<div class="col">
 				<div class="card h-100">
-					<img src="assets/images/{{ episode.image }}" class="card-img-top">
+					<a href="{{ episode.url | relative_url  }}" class="url-text">
+						<img src="{{ site.baseurl }}/assets/images/{{ episode.image }}" class="card-img-top">
+					</a>
 					<div class="card-body">
-						<h5 class="card-title">{{ episode.head }}</h5>
+						<a href="{{ episode.url | relative_url  }}" class="url-text">
+							<h5 class="card-title">{{ episode.head }}</h5>
+						</a>
 						<p class="card-text">
 							{{ episode.desc }}
 						<div class="dropdown text-center">
@@ -51,9 +63,9 @@ layout: base
 								Listen
 							</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="{{ episode.youtube_link }}">YouTube</a></li>
-								<li><a class="dropdown-item" href="{{ episode.spotify_link }}">Spotify</a></li>
-								<li><a class="dropdown-item" href="{{ episode.apple_podcasts_link }}">Apple Podcasts</a>
+								<li><a class="dropdown-item" href="{{ episode.youtube_link }}" target="_blank">YouTube</a></li>
+								<li><a class="dropdown-item" href="{{ episode.spotify_link }}" target="_blank">Spotify</a></li>
+								<li><a class="dropdown-item" href="{{ episode.apple_podcasts_link }}" target="_blank">Apple Podcasts</a>
 								</li>
 							</ul>
 						</div>

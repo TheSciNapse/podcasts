@@ -79,3 +79,11 @@
 	  }
 }
 
+.url-text{
+	text-decoration: none;
+	color: #212529;
+}
+
+.url-text:hover{
+	color: blue
+}
